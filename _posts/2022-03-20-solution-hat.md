@@ -9,13 +9,6 @@ author: ex_Asbable
 * content
 {:toc}
 
-const mathBlocks = document.querySelectorAll('script[type^="math/tex"]');
-Array.from(mathBlocks).forEach((el) => {
-  const tex = el.textContent.replace("% <![CDATA[", "").replace("%]]>", "");
-  el.outerHTML = window.katex.renderToString(tex, {
-    displayMode: el.type === "math/tex; mode=display",
-  });
-});
 
 $$u$$
 
