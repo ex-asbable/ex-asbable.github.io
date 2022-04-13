@@ -9,13 +9,21 @@ author: ex_Asbable
 * content
 {:toc}
 
+const mathBlocks = document.querySelectorAll('script[type^="math/tex"]');
+Array.from(mathBlocks).forEach((el) => {
+  const tex = el.textContent.replace("% <![CDATA[", "").replace("%]]>", "");
+  el.outerHTML = window.katex.renderToString(tex, {
+    displayMode: el.type === "math/tex; mode=display",
+  });
+});
+
 ## 20220322校内考试 T1 最大数 题解
 
 ### 题目描述
 
 现在请求你维护一个数列，要求提供查询和修改两种操作：
 
-1.查询数列中最后L个数的最大值
+1.查询数列中最后 $$L$$ 个数的最大值
 
 2.将数列末尾插入一个数，![](http://latex.codecogs.com/gif.latex?(n+t)\ mod\ d)，t为最近一次查询操作的答案，强制在线
 
